@@ -193,13 +193,12 @@ abstract class AbstractHelper extends View\Helper\AbstractHtmlElement implements
             RecursiveIteratorIterator::CHILD_FIRST
         );
 
-        $start = microtime(true);
+        //$start = microtime(true);
 
         /** @var \Zend\Navigation\Page\AbstractPage $page */
         foreach ($iterator as $page) {
             $currDepth = $iterator->getDepth();
-            // if ($currDepth < $minDepth || ! $this->accept($page)) {
-            if ($currDepth < $minDepth) {
+            if ($currDepth < $minDepth || ! $this->accept($page)) {
                 // page is not accepted
                 continue;
             }
@@ -211,9 +210,9 @@ abstract class AbstractHelper extends View\Helper\AbstractHtmlElement implements
             }
         }
 
-        $end = microtime(true);
+        //$end = microtime(true);
 
-        dump($end-$start);
+        //dump($end-$start);
 
         if (is_int($maxDepth) && $foundDepth > $maxDepth) {
             while ($foundDepth > $maxDepth) {
@@ -315,6 +314,9 @@ abstract class AbstractHelper extends View\Helper\AbstractHtmlElement implements
      */
     public function accept(AbstractPage $page, $recursive = true)
     {
+        return true;
+
+        /*
         $accept = true;
 
         if (! $page->isVisible(false) && ! $this->getRenderInvisible()) {
@@ -335,6 +337,7 @@ abstract class AbstractHelper extends View\Helper\AbstractHtmlElement implements
         }
 
         return $accept;
+        */
     }
 
     /**
