@@ -14,7 +14,7 @@ substitution, and more.
 
 On June 30, 2019, Zend\View was forked.
 
-To vastly improve performance in a very large Navigation tree, the "accept()" call now always returns "true" (li 315):
+To vastly improve performance in a very large Navigation tree, the `accept()` call now always returns `true` (li 315):
 
     public function accept(AbstractPage $page, $recursive = true)
 
@@ -28,6 +28,6 @@ to:
 
     0.049877882003784 s, 0.5161 s
 
-The first number is the time to for one call to the Navigation tree, the second the page execution time (page contained several calls to Navigation).
+The first number is the time to for *one call* to the Navigation component, the second the *page execution* time (page contained several calls to Navigation component).
 
 This only works, since we are not using the Visible flag nor the ACL functionality.
